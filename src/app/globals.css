@@ -1,26 +1,257 @@
 @import "tailwindcss";
+@plugin './hero.ts';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* Base CSS Variables */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 1%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 0 0% 1%;
+    --primary-foreground: 0 0% 1%;
+    --secondary: 352 90% 39%;
+    --secondary-foreground: 352 90% 39%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 165 100% 99%;
+    --accent-foreground: 165 100% 99%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --scrollbar-thumb-color: rgba(0, 0, 0, 0.1);
+    --scrollbar-thumb-hover-color: rgba(0, 0, 0, 0.2);
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 165 100% 99%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 1%;
+    --primary-foreground: 0 0% 1%;
+    --secondary: 352 90% 39%;
+    --secondary-foreground: 352 90% 39%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 165 100% 99%;
+    --accent-foreground: 165 100% 99%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --scrollbar-thumb-color: rgba(255, 255, 255, 0.1);
+    --scrollbar-thumb-hover-color: rgba(255, 255, 255, 0.2);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+@theme {
+  /* Define your color palette using CSS variables */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  
+  /* Border radius */
+  --radius: 0.5rem;
+  
+  /* Custom breakpoints */
+  --breakpoint-xs: 30rem;
+  --breakpoint-xmd: 55rem;
 }
+
+html,
+body {
+  font-family: Archivo, Arial, Helvetica, sans-serif;
+  user-select: none;
+  color: #FBFFFE;
+}
+
+.custom-border-spacing {
+  border-image: linear-gradient(to right, black 33%, rgba(255, 255, 255, 0) 33%) 1; 
+}
+
+/* SCROLLBAR STYLES */
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 8px; 
+    height: 8px; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+    border-radius: 4px; 
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-color);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0); 
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .wrapper {
+    @apply max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-evenly {
+    @apply flex justify-evenly items-center;
+  }
+
+  .clipGsap {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  
+  .clipGsapOverlay {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
+
+  /* TYPOGRAPHY */
+  .text-h1 {
+    @apply font-bold text-4xl sm:text-7xl sm:leading-[75px];
+  }
+
+  .text-h3-bold {
+    @apply font-bold text-3xl sm:text-5xl;
+  }
+
+  .text-h4-bold {
+    @apply font-bold text-2xl md:text-3xl;
+  }
+
+  .text-h6 {
+    @apply font-normal text-xl;
+  }
+
+  .text-h6-bold {
+    @apply font-semibold text-xl;
+  }
+
+  .text-body-1 { 
+    @apply font-medium text-lg;
+  }
+
+  .text-body-2-bold {
+    @apply font-medium text-base;
+  }
+
+  .text-subtitle {
+    @apply font-light text-sm md:text-base;
+  }
+
+  .text-shadow {
+    @apply font-light text-sm opacity-70;
+  }
+
+  /* BUTTON STYLE */
+  .btn-large {
+    @apply min-w-40 rounded-md;
+  }
+
+  .btn-thin {
+    @apply min-w-10 w-fit h-fit rounded-lg py-1 text-xs font-medium;
+  }
+}
+
+/* Base styles */
+@layer base {
+  :root {
+    --background: 0 0% 1%;
+    --foreground: 240 10% 3.9%;
+    --scrollbar-thumb-color: rgba(0, 0, 0, 0.1);
+    --scrollbar-thumb-hover-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .dark {
+    --background: 165 100% 99%;
+    --foreground: 0 0% 98%;
+    --scrollbar-thumb-color: rgba(255, 255, 255, 0.1);
+    --scrollbar-thumb-hover-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+ @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+ @custom-variant dark (&:is(.dark *));
