@@ -2,16 +2,16 @@
 import EventContainer from '@/components/reusable/EventContainer';
 import { defaultEvents } from '@/data/eventData';
 
-interface Hut80LayoutProps {
+interface Hut78LayoutProps {
   children: React.ReactNode;
 }
 
-export default function Hut80Layout({ children }: Hut80LayoutProps) {
-  const hut80Event = defaultEvents[0];
+export default function Hut78Layout({ children }: Hut78LayoutProps) {
+  const hut78Event = defaultEvents[2];
   
   return (
     <div className='relative'>
-      <EventContainer key="hut80" isSingle={true} event={hut80Event}/>
+      <EventContainer key="hut78" isSingle={true} event={hut78Event}/>
       {children}
     </div>
   )

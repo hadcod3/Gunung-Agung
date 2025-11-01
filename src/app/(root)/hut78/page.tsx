@@ -1,7 +1,7 @@
 import ImageGalleryContainer from "@/components/reusable/ImageGalleryContainer";
 
-export default function Hut77Page() {
+export default function Hut78Page() {
   return (
-    <ImageGalleryContainer category="HUT 77"/>
+    <ImageGalleryContainer category="HUT 78"/>
   )
 }

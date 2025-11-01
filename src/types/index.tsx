@@ -34,3 +34,19 @@ export interface Sponsor {
   name: string;
   category: string;
 }
+export interface Partner {
+  id: string;
+  name: string;
+  category: string;
+}
+
+export interface EventData {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  mobileImage: string;
+  desktopImage: string;
+  link: string;
+  category: string;
+}
